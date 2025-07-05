@@ -14,7 +14,6 @@ public class Main {
         customer.addToCart(scratchCard, 2);
         customer.addToCart(biscuits, 3);
 
-        customer.viewCart();
         customer.Checkout();
     }
 

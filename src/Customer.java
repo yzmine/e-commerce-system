@@ -45,6 +45,12 @@ public class Customer {
                 for (CartItem item : cart.getItems()) {
                     item.getProduct().reduceQuantity(item.getQuantity());
                 }
+                if (!cart.getShippableItems().isEmpty()) {
+                    ShippingService.ship(cart.getShippableItems());
+                }
+
+                viewCart();
+                System.out.println("- - - - - - - - - - - - -");
                 System.out.println("Checkout successful");
                 System.out.println("Customer: " + name);
                 System.out.println("Subtotal: $" + cart.getSubtotal());
@@ -52,9 +58,7 @@ public class Customer {
                 System.out.println("Total Paid: $" + total);
                 System.out.println("Remaining Balance: $" + balance);
 
-                if (!cart.getShippableItems().isEmpty()) {
-                    ShippingService.ship(cart.getShippableItems());
-                }
+
                 cart.clear();
             }
 
